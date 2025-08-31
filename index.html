@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Katalog Penjualan Buah-Buahan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: #fdfaf6;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 12px;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s forwards;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 30px rgba(0,0,0,0.15);
+    }
+
+    .btn-order {
+      background: #34d399; /* emerald */
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .btn-order:hover {
+      background: #059669;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #10b981;
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 1000;
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: opacity 0.5s, transform 0.5s;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-out {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col items-center p-6">
+
+  <!-- Header -->
+  <header class="mb-10 text-center max-w-xl">
+    <h1 class="text-4xl font-extrabold text-green-700 mb-2">Katalog Buah-Buahan</h1>
+    <p class="text-green-900 font-semibold">Penawaran terbaik dan segar langsung dari petani.</p>
+  </header>
+
+  <!-- Main Grid -->
+  <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl w-full">
+    
+    <!-- Card 1: Anggur Mix -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Anggur Mix.jpeg" 
+        alt="Tampak close up anggur mix berwarna merah, hijau dan hitam segar, tersusun rapih dalam pak plastik bening" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Anggur Mix</h2>
+        <ul class="text-green-700 flex-grow space-y-1 text-sm mb-4">
+          <li>1 kg - Rp 70.000</li>
+          <li>500 gr - Rp 36.000</li>
+        </ul>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Anggur%20Mix" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Anggur Mix')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card 2: Mangga Gedong -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Mangga Gedong.jpeg" 
+        alt="Tumpukan mangga gedong berwarna kuning segar khas dengan bintik-bintik di permukaan kulitnya" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Mangga Gedong</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 29.000 / kg</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Mangga%20Gedong" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Mangga Gedong')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card 3: Autum Royal Curah -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Autum royal curah.jpeg" 
+        alt="Keranjang berisi anggur autum royal hitam segar memiliki permukaan sedikit mengkilat tersusun rapih" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Autum Royal Curah</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 75.000 / kg</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Autum%20Royal%20Curah" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Autum Royal Curah')">Order Sekarang</a>
+      </div>
+    </section>
+
+    <!-- Card 4: Mangga Kaweni -->
+    <section class="card bg-white shadow-md overflow-hidden flex flex-col">
+      <img 
+        src="Mangga kaweni.jpeg" 
+        alt="Close up buah mangga kaweni berukuran besar, hijau segar di tangan dengan latar belakang tumpukan buah serupa" 
+        loading="lazy" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/png?text=Image+Not+Available';" />
+      <div class="p-4 flex flex-col flex-grow">
+        <h2 class="font-bold text-xl text-green-800 mb-2">Mangga Kaweni</h2>
+        <p class="text-green-700 flex-grow mb-4 text-sm">Rp 28.000 / kg</p>
+        <a href="https://wa.me/6281122332414?text=Halo%2C%20saya%20ingin%20memesan%20Mangga%20Kaweni" target="_blank" rel="noopener" class="btn-order" onclick="showNotification('Mangga Kaweni')">Order Sekarang</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-14 text-center text-green-900 font-semibold text-sm">
+    <p>Hubungi kami lewat tombol order pada buah yang ingin dibeli.</p>
+  </footer>
+
+  <!-- Notification -->
+  <div id="notification" class="notification">
+    Pesanan Anda berhasil dikirim! Kami akan segera menghubungi Anda.
+  </div>
+
+  <script>
+    // Animasi kartu saat halaman dimuat
+    document.addEventListener("DOMContentLoaded", function () {
+      const cards = document.querySelectorAll(".card");
+      cards.forEach((card, index) => {
+        setTimeout(() => {
+          card.style.animationDelay = `${index * 150}ms`;
+        }, 100);
+      });
+    });
+
+    // Notifikasi saat klik order
+    function showNotification(productName) {
+      const notification = document.getElementById("notification");
+      notification.textContent = `Pemesanan ${productName} berhasil!`;
+      notification.classList.remove("fade-out");
+      notification.style.opacity = "1";
+      notification.style.transform = "translateY(0)";
+
+      setTimeout(() => {
+        notification.classList.add("fade-out");
+        setTimeout(() => {
+          notification.style.opacity = "0";
+          notification.style.transform = "translateY(-20px)";
+        }, 500);
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
